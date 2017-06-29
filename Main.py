@@ -28,10 +28,7 @@ for tweet in iterator:
     # Twitter Python Tool wraps the data returned by Twitter 
     # as a TwitterDictResponse object.
     # We convert it back to the JSON format to print/score
-    try:
-        print json.dumps(tweet['user']['name'])
-    except:
-        print("Default Name")
+    print json.dumps(tweet['user']['name'])
     print json.dumps(tweet['user']['screen_name'])
     print json.dumps(tweet['text'])
     print (' ')  
