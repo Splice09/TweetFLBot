@@ -15,6 +15,13 @@ oauth = OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
 # Initiate the connection to Twitter Streaming API
 twitter_stream = TwitterStream(auth=oauth)
 
+
+# Get a list of followers of a particular user
+#twitter.followers.ids(screen_name="cocoweixu")
+
+# Get a particular user's timeline (up to 3,200 of his/her most recent tweets)
+#twitter.statuses.user_timeline(screen_name="billybob")
+
 # Get a sample of the public data following through Twitter
 iterator = twitter_stream.statuses.filter(track="Google", language="en")
 
