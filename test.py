@@ -1,14 +1,17 @@
+"""
+Test script.
+"""
 #import player class
 from Player import *
 
 
-file = open("TweetID.txt", "r")
+MY_FILE = open("TweetID.txt", "r")
 
-if file.mode == 'r':
-    fileLines = file.readlines()
-    PlayerList = [Player(line.split(",")[0], line.split(",")[1]) for line in fileLines]
+if MY_FILE.mode == 'r':
+    FILE_LINES = MY_FILE.readlines()
+    PLAYER_LIST = [Player(line.split(",")[0], line.split(",")[1]) for line in FILE_LINES]
 
-file.close()
+MY_FILE.close()
 
-print(PlayerList[0].tsn)
-print(PlayerList[0].tid)
+print PLAYER_LIST[0].tsn
+print PLAYER_LIST[0].tid

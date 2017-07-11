@@ -1,4 +1,12 @@
+"""
+Player class created to maintain a list of objects in the main
+script.
+"""
 class Player:
-    def __init__(self, twitterScreenName, tweetId):
-        self.tsn = twitterScreenName
-        self.tid = tweetId
+    """
+    Constructor
+    """
+    def __init__(self, twitter_screen_name, tweet_id):
+        self.tsn = twitter_screen_name
+        self.tid = tweet_id
+        
