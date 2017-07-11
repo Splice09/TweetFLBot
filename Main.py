@@ -10,16 +10,18 @@ from twitter import Twitter, OAuth, TwitterHTTPError, TwitterStream
 #import credentials from credential file
 from Credentials import *
 
+#import player class
+from Player import *
+
 oauth = OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
 
 # Initiate the connection to Twitter Streaming API
 twitter_stream = TwitterStream(auth=oauth)
 
+#Call function to obtain recent TweetIds from file
+PlayerList = GetRecentTweetIdsFromFile()
 
-# Get a list of followers of a particular user
-#twitter.followers.ids(screen_name="cocoweixu")
-
-# Get a particular user's timeline (up to 3,200 of his/her most recent tweets)
+# Returns a collection of the most recent Tweets posted by the user indicated by the screen_name or user_id parameters. (up to 3,200 of his/her most recent tweets)
 #twitter.statuses.user_timeline(screen_name="billybob")
 
 # Get a sample of the public data following through Twitter
@@ -45,3 +47,14 @@ for tweet in iterator:
        
     if tweet_count <= 0:
         break
+
+
+def GetRecentTweetIdsFromFile():
+    file = open("TweetID.txt", "r")
+
+    if file.mode == 'r':
+        fileLines = file.readlines()
+        PlayerList = [Player(line.split(",")[0], line.split(",")[1]) for line in fileLines]
+
+    file.close()
+    return PlayerList

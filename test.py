@@ -1,6 +1,14 @@
-file = open("TweetID.txt", "w+")
+#import player class
+from Player import *
 
-for i in range(10):
-    file.write("%d" % i +","+"This is a new line of Patrick\r\n")
+
+file = open("TweetID.txt", "r")
+
+if file.mode == 'r':
+    fileLines = file.readlines()
+    PlayerList = [Player(line.split(",")[0], line.split(",")[1]) for line in fileLines]
 
 file.close()
+
+print(PlayerList[0].tsn)
+print(PlayerList[0].tid)
