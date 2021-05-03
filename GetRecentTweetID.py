@@ -20,16 +20,16 @@ O_AUTH = OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
 # Initiate the connection to Twitter REST API
 TWITTER = Twitter(auth=O_AUTH)
 
-#Create list of players to scrape tweets from
-player_list = [line.rstrip('\n') for line in open("DauphinsTwitter.txt")]
+#Create list of users to scrape tweets from
+user_list = [line.rstrip('\n') for line in open("TwitterUserList.txt")]
 
 #Open file we will write tweet ID to
 MY_FILE = open("TweetID.txt", "w+")
 
-for player in player_list:
+for user in user_list:
     # Returns a collection of the most recent Tweets posted by the user
     # indicated by the screen_name or user_id parameters excluding replies.
-    ITERATOR = TWITTER.statuses.user_timeline(screen_name= player, exclude_replies="true")
+    ITERATOR = TWITTER.statuses.user_timeline(screen_name= user, exclude_replies="true")
 
     # Print the first tweet in the returned list to the screen
     TWEET_COUNT = 1
@@ -39,12 +39,12 @@ for player in player_list:
         # as a TwitterDictResponse object.
         # We convert it back to the JSON format to print/score
         MY_FILE.write(tweet['user']['screen_name'] +","+ json.dumps(tweet['id']) + "\r\n")
-        print "Tweet ID for " + player + " captured."
-        print ''
+        print ("Tweet ID for " + user + " captured.")
+        print ('')
 
         if TWEET_COUNT <= 0:
             break
 
 
 MY_FILE.close()
-print "Tweet ID caputre complete."
+print ("Tweet ID caputre complete.")

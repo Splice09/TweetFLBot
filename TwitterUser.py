@@ -1,8 +1,8 @@
 """
-Player class created to maintain a list of objects in the main
+User class created to maintain a list of objects in the main
 script.
 """
-class Player:
+class User:
     """
     Constructor
     """
